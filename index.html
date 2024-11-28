@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Scroll Demo</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
+
+        function ScrollCounter() {
+            const [count, setCount] = useState(50);
+ 
+useEffect(() => {
+window.addEventListener("scroll", handleScroll);
+}, [])
+ 
+const handleScroll = () => {
+setCount((prevCount) => prevCount + 1);
+}
+console.log(count) 
+
+            return (
+                <div style={{ height: "200vh", padding: "20px" }}>
+                    <h1>Scroll Count: {count}</h1>
+                    <p>Scroll down to increase the count!</p>
+                </div>
+            );
+        }
+
+        ReactDOM.render(<ScrollCounter />, document.getElementById('root'));
+    </script>
+</body>
+</html>
